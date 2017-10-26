@@ -277,6 +277,12 @@ header .intro-text .intro-heading {
     margin-bottom: 50px;
   }
 }
+.header-titles {
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.lead-in-color {
+  color: #FED136;
+}
 section {
   padding: 100px 0;
 }
@@ -372,7 +378,7 @@ section h3.section-subheading {
   padding: 0;
   position: relative;
 }
-.timeline:before {
+/* .timeline:before {
   top: 0;
   bottom: 0;
   position: absolute;
@@ -381,7 +387,7 @@ section h3.section-subheading {
   background-color: #f1f1f1;
   left: 40px;
   margin-left: -1.5px;
-}
+} */
 .timeline > li {
   margin-bottom: 50px;
   position: relative;
