@@ -2,8 +2,10 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-require_once 'PHPMailer/src/PHPMailer.php';
-require_once 'PHPMailer/src/SMTP.php';
+
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+require 'path/to/PHPMailer/src/Exception.php';
 
 // Check for empty fields
 if(empty($_POST['name'])      ||
@@ -21,9 +23,9 @@ $email_address = strip_tags(htmlspecialchars($_POST['email']));
 $phone = strip_tags(htmlspecialchars($_POST['phone']));
 $message = strip_tags(htmlspecialchars($_POST['message']));
 
-$mail = new PHPMailer();
+$mail = new PHPMailer(true);
 $mail->IsSMTP(); // telling the class to use SMTP
-// $mail->SMTPDebug = 0;
+$mail->SMTPDebug = 2;
 $mail->SMTPAuth = true; // enable SMTP authentication
 $mail->SMTPSecure = "tls"; // sets the prefix to the servier
 $mail->Host = "smtp.gmail.com"; // sets GMAIL as the SMTP server
@@ -40,9 +42,10 @@ $mail->AddAddress($email_address, $name);
 try{
     $mail->Send();
     echo "Success!";
-} catch(Exception $e){
-    //Something went bad
-    echo "Fail - " . $mail->ErrorInfo;
+} catch(phpmailerException  $e){
+  echo $e->errorMessage();
+} catch (Exception $e) {
+  echo $e->getMessage();
 }
 
 // Create the email and send the message
