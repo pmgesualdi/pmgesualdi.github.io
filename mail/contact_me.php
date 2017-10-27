@@ -1,9 +1,5 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require_once 'PHPMailer/src/PHPMailer.php';
-require_once 'PHPMailer/src/Exception.php';
+// require_once ('PHPMailer\src\PHPMailer'); // Add the path as appropriate
 
 // Check for empty fields
 if(empty($_POST['name'])      ||
@@ -21,37 +17,49 @@ $email_address = strip_tags(htmlspecialchars($_POST['email']));
 $phone = strip_tags(htmlspecialchars($_POST['phone']));
 $message = strip_tags(htmlspecialchars($_POST['message']));
 
-$mail = new PHPMailer(true);
-$mail->IsSMTP(); // telling the class to use SMTP
-$mail->SMTPDebug = 2;
-$mail->SMTPAuth = true; // enable SMTP authentication
-$mail->SMTPSecure = "tls"; // sets the prefix to the servier
-$mail->Host = "smtp.gmail.com"; // sets GMAIL as the SMTP server
-$mail->Port = 587; // set the SMTP port for the GMAIL server
-$mail->Username = "patog91@gmail.com"; // GMAIL username
-$mail->Password = "gaviota.2!"; // GMAIL password
+$messageHTML = "You have received a new message from your website contact form.\n\n"."Here are the details:\n\nName: $name\n\nEmail: $email_address\n\nPhone: $phone\n\nMessage:\n$message";
 
-//Typical mail data
-$mail->SetFrom("patog91@gmail.com", 'Black Duck');
-$mail->Subject = "Website Contact Form:  $name";
-$mail->Body = "You have received a new message from your website contact form.\n\n"."Here are the details:\n\nName: $name\n\nEmail: $email_address\n\nPhone: $phone\n\nMessage:\n$message";
-$mail->AddAddress($email_address, $name);
+function SendMail($toName, $toEmail, $messageHTML, $messageTEXT) {
+  require_once ('PHPMailer\src\PHPMailer.php'); // Add the path as appropriate
+  $Mail = new PHPMailer();
+  $Mail->IsSMTP(); // Use SMTP
+  $Mail->Host        = "smtp.gmail.com"; // Sets SMTP server
+  $Mail->SMTPDebug   = 2; // 2 to enable SMTP debug information
+  $Mail->SMTPAuth    = TRUE; // enable SMTP authentication
+  $Mail->SMTPSecure  = "tls"; //Secure conection
+  $Mail->Port        = 587; // set the SMTP port
+  $Mail->Username    = 'patog91@gmail.com'; // SMTP account username
+  $Mail->Password    = 'gaviota.2!'; // SMTP account password
+  $Mail->Priority    = 1; // Highest priority - Email priority (1 = High, 3 = Normal, 5 = low)
+  $Mail->CharSet     = 'UTF-8';
+  $Mail->Encoding    = '8bit';
+  $Mail->Subject     = "Website Contact Form:  $toName";
+  $Mail->ContentType = 'text/html; charset=utf-8\r\n';
+  $Mail->From        = 'patog91@gmail.com';
+  $Mail->FromName    = 'Black Duck';
+  $Mail->WordWrap    = 900; // RFC 2822 Compliant for Max 998 characters per line
 
-try{
-    $mail->Send();
-    echo "Success!";
-} catch(phpmailerException  $e){
-  echo $e->errorMessage();
-} catch (Exception $e) {
-  echo $e->getMessage();
+  $Mail->AddAddress($toEmail); // To:
+  $Mail->isHTML(true);
+  $Mail->Body    = $messageHTML;
+  $Mail->AltBody = $messageTEXT;
+  $Mail->Send();
+  $Mail->SmtpClose();
+
+  if ($Mail->IsError()) { // ADDED - This error checking was missing
+    return false;
+  }
+  else {
+    return true;
+  }
 }
 
-// Create the email and send the message
-// $to = 'patog91@gmail.com'; // Add your email address inbetween the '' replacing yourname@yourdomain.com - This is where the form will send a message to.
-// $email_subject = "Website Contact Form:  $name";
-// $email_body = "You have received a new message from your website contact form.\n\n"."Here are the details:\n\nName: $name\n\nEmail: $email_address\n\nPhone: $phone\n\nMessage:\n$message";
-// $headers = "From: black-duck@consultant.com\n"; // This is the email address the generated message will be from. We recommend using something like noreply@yourdomain.com.
-// $headers .= "Reply-To: $email_address";
-// mail($to,$email_subject,$email_body,$headers);
-return true;
-?>
+$Send = SendMail($name, $email_address, $messageHTML, $message);
+
+if ($Send) {
+  echo "<h2> Sent OK</h2>";
+}
+else {
+  echo "<h2> ERROR</h2>";
+}
+die;
