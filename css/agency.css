@@ -771,6 +771,6 @@ body {
   transform: none;
   transition: all 0.3s;
 }
-.word-break{
-  word-break: break-all;
+.word-wrap{
+  word-wrap: break-word;
 }
