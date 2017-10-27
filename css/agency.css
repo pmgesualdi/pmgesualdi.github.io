@@ -277,12 +277,6 @@ header .intro-text .intro-heading {
     margin-bottom: 50px;
   }
 }
-.header-titles {
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-}
-.lead-in-color {
-  color: #FED136;
-}
 section {
   padding: 100px 0;
 }
@@ -749,4 +743,23 @@ img::-moz-selection {
 }
 body {
   webkit-tap-highlight-color: #fed136;
+}
+
+/* New Classes */
+.header-titles {
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.lead-in-color {
+  color: #FED136;
+}
+.custom-img-circle {
+  border-radius: 50%;
+}
+.thumbnail:hover {
+    transform: scale(1.2);
+    transition: all 0.3s;
+}
+.thumbnail-out:not( :hover ) {
+  transform: none;
+  transition: all 0.3s;
 }
