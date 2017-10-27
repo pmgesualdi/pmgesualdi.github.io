@@ -771,3 +771,6 @@ body {
   transform: none;
   transition: all 0.3s;
 }
+.word-break{
+  word-break: break-all;
+}
