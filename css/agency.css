@@ -758,16 +758,14 @@ body {
 .thumbnail:hover{
     transform: scale(1.2);
     transition: all 0.3s;
-}
-.thumbnail:not( :hover ){
+}:not( :hover ){
   transform: none;
   transition: all 0.3s;
 }
 .thumbnail:hover ~ *{
   transform: scale(1.2);
   transition: all 0.3s;
-}
-.thumbnail:not( :hover ) ~ *{
+}:not( :hover ) ~ *{
   transform: none;
   transition: all 0.3s;
 }

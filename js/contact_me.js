@@ -20,15 +20,17 @@ $(function() {
                 firstName = name.split(' ').slice(0, -1).join(' ');
             }
             $.ajax({
-                url: "././mail/contact_me.php",
+                url: "https://formspree.io/pmgesualdi@gmail.com",
                 type: "POST",
-                data: {
-                    name: name,
-                    phone: phone,
-                    email: email,
-                    message: message
-                },
-                cache: false,
+                data: $(this).serialize(),
+                    // name: name,
+                    // _replyto: email,
+                    //  email: email,
+                    // comments: phone,
+                    // _subject: 'Black Duck Contact',
+                // },
+                dataType: 'json',
+                // cache: false,
                 success: function() {
                     // Success message
                     $('#success').html("<div class='alert alert-success'>");
