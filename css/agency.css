@@ -755,17 +755,12 @@ body {
 .custom-img-circle {
   border-radius: 50%;
 }
-.thumbnail:hover{
+.thumbnail:focus,
+.thumbnail:active{
     transform: scale(1.2);
     transition: all 0.3s;
-}:not( :hover ){
-  transform: none;
-  transition: all 0.3s;
-}
-.thumbnail:hover ~ *{
-  transform: scale(1.2);
-  transition: all 0.3s;
-}:not( :hover ) ~ *{
+}:not( :hover ),
+:not( :active ){
   transform: none;
   transition: all 0.3s;
 }
