@@ -20,15 +20,15 @@ $(function() {
                 firstName = name.split(' ').slice(0, -1).join(' ');
             }
             $.ajax({
-                url: "https://formspree.io/pmgesualdi@gmail.com",
+                url: "//formspree.io/pmgesualdi@gmail.com",
                 type: "POST",
-                data: $(this).serialize(),
-                    // name: name,
-                    // _replyto: email,
-                    //  email: email,
-                    // comments: phone,
-                    // _subject: 'Black Duck Contact',
-                // },
+                data: {
+                    name: name,
+                    _replyto: email,
+                     email: email,
+                    comments: phone,
+                    _subject: 'Black Duck Contact',
+                },
                 dataType: 'json',
                 // cache: false,
                 success: function() {
