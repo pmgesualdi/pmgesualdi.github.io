@@ -1,7 +1,7 @@
 // Agency Theme JavaScript
 $( document ).ready(function() {
     $('.team-member img').toggleClass(function() {
-        return ('ontouchstart' in window) ? 'thumbnail' : 'thumbnail-mobile';
+        return ('ontouchstart' in window) ? 'thumbnail-mobile' : 'thumbnail';
       });
 });
 
