@@ -139,8 +139,8 @@ fieldset[disabled] .btn-xl:active,
 .btn-xl.disabled.active,
 .btn-xl[disabled].active,
 fieldset[disabled] .btn-xl.active {
-  background-color: #fed136;
-  border-color: #fed136;
+  background-color: #0041C2;
+  border-color: #0041C2;
 }
 .btn-xl .badge {
   color: #fed136;
@@ -645,7 +645,7 @@ ul.social-buttons li a {
 ul.social-buttons li a:hover,
 ul.social-buttons li a:focus,
 ul.social-buttons li a:active {
-  background-color: #fed136;
+  background-color: #0041C2;
 }
 .btn:focus,
 .btn:active,
@@ -771,4 +771,15 @@ body {
 }
 .word-wrap{
   word-wrap: break-word;
+}
+.blueberry-logo{
+  height: 10%;
+  width: 10%;
+}
+@media (max-width: 768px) {
+  .blueberry-logo{
+    margin-top: 10px;
+    height: 5%;
+    width: 5%;
+  }
 }
