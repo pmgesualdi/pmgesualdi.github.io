@@ -778,6 +778,10 @@ body {
   margin-bottom: 0;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+.about-logo{
+  height: 23%;
+  width: 23%;
+}
 /* .rotate-wrench:hover {
   -moz-animation: spin .4s 1 linear;
   -o-animation: spin .4s 1 linear;
