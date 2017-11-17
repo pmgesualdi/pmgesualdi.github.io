@@ -3,6 +3,10 @@ $( document ).ready(function() {
     $('.team-member img').toggleClass(function() {
         return ('ontouchstart' in window) ? 'thumbnail-mobile' : 'thumbnail';
       });
+
+    sr.reveal(document.getElementById('services'), { mobile: true });
+    sr.reveal(document.getElementById('about'), { mobile: true });
+    sr.reveal(document.getElementById('footer'), { mobile: true });
 });
 
 (function($) {

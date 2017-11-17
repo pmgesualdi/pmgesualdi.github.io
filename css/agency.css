@@ -782,12 +782,15 @@ body {
   margin-bottom: 0;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-.rotate-wrench:hover {
+/* .rotate-wrench:hover {
   -moz-animation: spin .4s 1 linear;
   -o-animation: spin .4s 1 linear;
   -webkit-animation: spin .4s 1 linear;
   animation: spin .4s 1 linear;
 }
+.pc-light:hover {
+  color: #406bbb;
+} */
 
 @keyframes spin {
   0% { transform: rotate(0deg); }

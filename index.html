@@ -28,6 +28,12 @@
     <link rel="shortcut icon" type="image/png" href="favicon-32x32.png"/>
     <link rel="shortcut icon" type="image/png" href="favicon-16x16.png"/>
 
+    <!-- ScrollReveal.js -->
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+    <script>
+        window.sr = ScrollReveal({ reset: true });
+    </script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -108,7 +114,7 @@
                     <p class="text-muted">Nos encargamos de llevar a cabo un servicio integral de instalación, mantenimiento, y actualización de sus componentes y sistemas.</p>
                 </div>
                 <div class="col-md-4">
-                    <span class="fa-stack fa-4x rotate-pc">
+                    <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
                         <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
                     </span>
@@ -445,7 +451,7 @@
     </section>
 
     <footer>
-        <div class="container">
+        <div id="footer" class="container">
             <div class="row">
                 <div class="col-md-4">
                     <ul class="list-inline quicklinks">
