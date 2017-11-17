@@ -151,14 +151,14 @@ fieldset[disabled] .btn-xl.active {
   border-color: transparent;
 }
 .navbar-custom .navbar-brand {
-  color: #0041C2;
+  color: #2869EA;
   font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
 }
 .navbar-custom .navbar-brand:hover,
 .navbar-custom .navbar-brand:focus,
 .navbar-custom .navbar-brand:active,
 .navbar-custom .navbar-brand.active {
-  color: #2869EA;
+  color: #5091FF;
 }
 .navbar-custom .navbar-collapse {
   border-color: rgba(255, 255, 255, 0.02);
@@ -772,14 +772,24 @@ body {
 .word-wrap{
   word-wrap: break-word;
 }
-.blueberry-logo{
-  height: 10%;
-  width: 10%;
+.whatsapp-logo{
+  height: 6%;
+  width: 6%;
 }
-@media (max-width: 768px) {
-  .blueberry-logo{
-    margin-top: 10px;
-    height: 5%;
-    width: 5%;
-  }
+.whatsapp-ul{
+  list-style-type: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.rotate-wrench:hover {
+  -moz-animation: spin .4s 1 linear;
+  -o-animation: spin .4s 1 linear;
+  -webkit-animation: spin .4s 1 linear;
+  animation: spin .4s 1 linear;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(359deg); }
 }
