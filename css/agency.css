@@ -729,7 +729,7 @@ ul.social-buttons li a:active {
 }
 ::-moz-selection {
   text-shadow: none;
-  background: #fed136;
+  background: #A0E1FF;
 }
 ::selection {
   text-shadow: none;
@@ -824,7 +824,10 @@ body {
 .shrink:hover{
   transform: scale(0.7);
   -webkit-transform: scale(0.7);
-
+}
+.shrink-mobile:active{
+  transform: scale(0.7);
+  -webkit-transform: scale(0.7);
 }
 
 /* Shake */
