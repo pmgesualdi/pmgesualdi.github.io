@@ -762,25 +762,14 @@ body {
   height: 23%;
   width: 23%;
 }
+.phone-list{
+  text-align: left; 
+  margin: auto; 
+  width: 200px;
+}
 .phones{
   line-height: 40px;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-/* CSS Grid */
-.wrapper {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: minmax(20px, auto);
-}
-.whatsapp-icons{
-  grid-column: 4;
-  grid-row: 1/ 3;
-}
-.whatsapp-numbers{
-  text-align: left;
-  grid-column: 5/ 11;
-  grid-row: 1/ 3;
 }
 
 /* --- Animations --- */
@@ -821,7 +810,7 @@ body {
 }
 
 /* Responsive */
-.responsive-devices > .fa + .fa,
+/* .responsive-devices > .fa + .fa,
 .responsive-devices:hover> .fa {
   display: none;
 
@@ -830,6 +819,12 @@ body {
   display: inherit;
   transition: all 1s;
   -webkit-transition: all 1s;
+} */
+
+.shrink:hover{
+  transform: scale(0.7);
+  -webkit-transform: scale(0.7);
+
 }
 
 /* Shake */
