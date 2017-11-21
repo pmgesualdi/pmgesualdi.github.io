@@ -772,15 +772,13 @@ body {
 .word-wrap{
   word-wrap: break-word;
 }
-.whatsapp-ul{
-  list-style-type: none;
-  margin-top: 0;
-  margin-bottom: 0;
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
 .about-logo{
   height: 23%;
   width: 23%;
+}
+.phones{
+  line-height: 40px;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 /* .rotate-wrench:hover {
   -moz-animation: spin .4s 1 linear;
