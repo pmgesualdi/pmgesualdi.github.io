@@ -774,7 +774,7 @@ body {
   grid-auto-rows: minmax(20px, auto);
 }
 .whatsapp-icons{
-  grid-column: 4/ 4;
+  grid-column: 4;
   grid-row: 1/ 3;
 }
 .whatsapp-numbers{
@@ -824,15 +824,12 @@ body {
 .responsive-devices > .fa + .fa,
 .responsive-devices:hover> .fa {
   display: none;
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s, opacity 0.5s linear;
-  -webkit-transition: visibility 0s, opacity 0.5s linear;
+
 }
 .responsive-devices:hover> .fa + .fa {
   display: inherit;
-  visibility: visible;
-  opacity: 1;
+  transition: all 1s;
+  -webkit-transition: all 1s;
 }
 
 /* Shake */
