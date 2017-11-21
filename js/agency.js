@@ -1,12 +1,27 @@
 // Agency Theme JavaScript
 $( document ).ready(function() {
+    
     $('.team-member img').toggleClass(function() {
         return ('ontouchstart' in window) ? 'thumbnail-mobile' : 'thumbnail';
-      });
+        }
+    );
+    $('.fa-wrench').toggleClass(function() {
+        return ('ontouchstart' in window) ? 'rotate-mobile' : 'rotate';
+      }
+    );
+    $('.fa-laptop').toggleClass(function() {
+            return ('ontouchstart' in window) ? 'shrink-mobile' : 'shrink';
+        }
+    );
+    $('.fa-lock').toggleClass(function() {
+        return ('ontouchstart' in window) ? 'shake-mobile' : 'shake';
+      }
+    );
 
-    sr.reveal(document.getElementById('services'), { mobile: true });
-    sr.reveal(document.getElementById('about'), { mobile: true });
-    sr.reveal(document.getElementById('footer'), { mobile: true });
+    sr.reveal($('#services'), { mobile: true, duration: 799, delay: 1 });
+    sr.reveal($('#about'), { mobile: true, duration: 799, delay: 1 });
+    sr.reveal($('#footer'), { mobile: true, duration: 799, delay: 1 });
+
 });
 
 (function($) {

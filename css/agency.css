@@ -755,6 +755,37 @@ body {
 .custom-img-circle {
   border-radius: 50%;
 }
+.word-wrap{
+  word-wrap: break-word;
+}
+.about-logo{
+  height: 23%;
+  width: 23%;
+}
+.phones{
+  line-height: 40px;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* CSS Grid */
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: minmax(20px, auto);
+}
+.whatsapp-icons{
+  grid-column: 4/ 4;
+  grid-row: 1/ 3;
+}
+.whatsapp-numbers{
+  text-align: left;
+  grid-column: 5/ 11;
+  grid-row: 1/ 3;
+}
+
+/* --- Animations --- */
+
+/* Picture Zoom */
 .thumbnail:hover{
   transform: scale(1.2);
   transition: all 0.3s;
@@ -769,28 +800,69 @@ body {
   transform: none;
   transition: all 0.3s;
 }
-.word-wrap{
-  word-wrap: break-word;
-}
-.about-logo{
-  height: 23%;
-  width: 23%;
-}
-.phones{
-  line-height: 40px;
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-/* .rotate-wrench:hover {
+
+/* Rotate */
+.rotate:hover {
   -moz-animation: spin .4s 1 linear;
   -o-animation: spin .4s 1 linear;
   -webkit-animation: spin .4s 1 linear;
   animation: spin .4s 1 linear;
 }
-.pc-light:hover {
-  color: #406bbb;
-} */
+.rotate-mobile:active {
+  -moz-animation: spin .4s 1 linear;
+  -o-animation: spin .4s 1 linear;
+  -webkit-animation: spin .4s 1 linear;
+  animation: spin .4s 1 linear;
+}
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(359deg); }
+}
+
+/* Responsive */
+.responsive-devices > .fa + .fa,
+.responsive-devices:hover> .fa {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+  -webkit-transition: visibility 0s, opacity 0.5s linear;
+}
+.responsive-devices:hover> .fa + .fa {
+  display: inherit;
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Shake */
+.shake:hover {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+.shake-mobile:active {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
