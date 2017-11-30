@@ -12,6 +12,10 @@ $( document ).ready(function() {
     function getCss (name) {
         return ('ontouchstart' in window) ? name + '-mobile' : name;
     }
+
+    $.get("https://www.mercadopago.com/mla/credit_card_promos.json", function( data ) {
+        var a = data;
+    });
 });
 
 
