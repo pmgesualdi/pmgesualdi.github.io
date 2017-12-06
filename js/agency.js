@@ -1,24 +1,4 @@
 // Agency Theme JavaScript
-$( document ).ready(function() {
-    $('.team-member img').toggleClass(getCss('thumbnail'));
-    $('.fa-wrench').toggleClass(getCss('rotate'));
-    $('.fa-laptop').toggleClass(getCss('shrink'));
-    $('.fa-lock').toggleClass(getCss('shake'));
-
-    sr.reveal($('#services'), { mobile: true, duration: 799, delay: 1 });
-    sr.reveal($('#about'), { mobile: true, duration: 799, delay: 1 });
-    sr.reveal($('#footer'), { mobile: true, duration: 799, delay: 1 });
-
-    function getCss (name) {
-        return ('ontouchstart' in window) ? name + '-mobile' : name;
-    }
-
-    $.get("https://www.mercadopago.com/mla/credit_card_promos.json", function( data ) {
-        var a = data;
-    });
-});
-
-
 (function($) {
     "use strict"; // Start of use strict
 

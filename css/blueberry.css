@@ -1,0 +1,37 @@
+
+.shadow-contour {
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.lead-in-color {
+    color: #FED136;
+}
+.custom-img-circle {
+    border-radius: 50%;
+}
+.word-wrap {
+    word-wrap: break-word;
+}
+.about-logo {
+    height: 23%;
+    width: 23%;
+}
+.phone-list {
+    text-align: left; 
+    margin: auto; 
+    width: 200px;
+}
+.phones {
+    line-height: 40px;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.slick-track {
+    padding: 15%;
+}
+/* .slick-prev:before {
+    background: #0041C2;
+    font-size: 30px;
+}
+.slick-next:before {
+    background: #0041C2;
+    font-size: 30px;
+} */
