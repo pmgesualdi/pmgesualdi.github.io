@@ -11,7 +11,7 @@ $( document ).ready(function() {
     
     
     $.ajax({
-        url: 'http://www.mercadopago.com/mla/credit_card_promos.json',
+        url: 'https://www.mercadopago.com/mla/credit_card_promos.json',
         type: 'GET',
         data: {},
         dataType:'jsonp',
