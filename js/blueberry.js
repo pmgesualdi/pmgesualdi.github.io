@@ -1,6 +1,7 @@
+var promosMP = new Array;
+var infoBancos;
+
 $( document ).ready(function() {
-    var mercadoPagoPromos;
-    var infoBancos;
 
     $('.team-member img').toggleClass(getCss('thumbnail'));
     $('.fa-wrench').toggleClass(getCss('rotate'));
@@ -10,76 +11,51 @@ $( document ).ready(function() {
     sr.reveal($('#services'), { mobile: true, duration: 799, delay: 1 });
     sr.reveal($('#about'), { mobile: true, duration: 799, delay: 1 });
     sr.reveal($('#footer'), { mobile: true, duration: 799, delay: 1 });
-    
-    makeAjaxCall('https://www.mercadopago.com/mla/credit_card_promos.json', 'GET').then(function(jsonResponse){
-        mercadoPagoPromos = jsonResponse[2];
         
-        loadBanksJson(function(data) {
-            infoBancos = JSON.parse(data);
-        })
-    })
-        // .then(makeAjaxCall('../resources/banks.json', 'GET').then(function(jsonBancos){
-        // })
-        // .then(initCarousel())
-    // )
-    
-    function makeAjaxCall(url, methodType, callback){
-        return $.ajax({
-           url : url,
-           type : methodType,
-           dataType : "jsonp"
-        })
-    }
+    $.ajax({
+        url: 'https://www.mercadopago.com/mla/credit_card_promos.json',
+        type: 'GET',
+        dataType: 'jsonp',
+        success: function(response) {
+            //Get MercadoPago promos
+            response[2].forEach(function(obj) {
+                promosMP.push([obj.issuer.id, obj.issuer.name, obj.expiration_date, obj.max_installments]);
+            });
 
-    // $.ajax({
-    //     url: 'https://www.mercadopago.com/mla/credit_card_promos.json',
-    //     type: 'GET',
-    //     data: {},
-    //     dataType:'json',
-    //     success: function(data) {
-    //         addPromosToCarousel(data[2]);
-    //     }
-    // });
-    
-    function loadBanksJson(callback) {
-        var xobj = new XMLHttpRequest();
-        xobj.overrideMimeType("application/json");
-        xobj.open('GET', './resources/banks.json', true);
-        xobj.onreadystatechange = function() {
-            if (xobj.readyState == 4 && xobj.status == "200") {
-                // .open will NOT return a value but simply returns undefined in async mode so use a callback
-                callback(xobj.responseText);
-            }
+            $.getJSON('./resources/banks.json', function(data){
+                infoBancos = data; //Get bank logos
+                initCarousel(); //Render Carousel
+            })
         }
-        xobj.send(null);
-    }
-
+     })
+    
     function getCss (name) {
         return ('ontouchstart' in window) ? name + '-mobile' : name;
     }
     
     function initCarousel () {
-        for(var i = 1; i < promos.length - 1; i++) {
-            var imgUrl;
-            var currentPromo = promos[i];
-            var promoDate = getDate(currentPromo.expiration_date);
+        // for(var i = 1; i < promos.length - 1; i++) {
+        //     var imgUrl;
+        //     var currentPromo = promos[i];
+        //     var promoDate = getDate(currentPromo.expiration_date);
             
-            if (currentPromo.payment_methods[1]) {
-                imgUrl = currentPromo.payment_methods[1].thumbnail;
-            } else {
-                imgUrl = currentPromo.payment_methods[0].thumbnail;
-            }
+        //     if (currentPromo.payment_methods[1]) {
+        //         imgUrl = currentPromo.payment_methods[1].thumbnail;
+        //     } else {
+        //         imgUrl = currentPromo.payment_methods[0].thumbnail;
+        //     }
             
-            $('<div><div><img src="' + imgUrl + '">'
-                + '<div>Hasta ' + currentPromo.max_installments + ' cuotas sin interés!</div>'
-                + '<div>' + promoDate + '</div></div>'
-            ).appendTo('.carousel');
-        }
+        //     $('<div><div><img src="' + imgUrl + '">'
+        //         + '<div>Hasta ' + currentPromo.max_installments + ' cuotas sin interés!</div>'
+        //         + '<div>' + promoDate + '</div></div>'
+        //     ).appendTo('.carousel');
+        // }
         
+        var slides = 'ontouchstart' in window ? 1 : 3;
         $('.carousel').slick({
             infinite: true,
-            slidesToShow: 3,
-            slidesToScroll: 3
+            slidesToShow: slides,
+            slidesToScroll: slides
         });
     }
 
