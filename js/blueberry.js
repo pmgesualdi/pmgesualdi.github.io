@@ -27,14 +27,19 @@ $( document ).ready(function() {
     function addPromosToCarousel (promos) {
         for(var i = 1; i < promos.length - 1; i++) {
             var imgUrl;
+            var currentPromo = promos[i];
+            var promoDate = getDate(currentPromo.expiration_date);
             
-            if (promos[i].payment_methods[1]) {
-                imgUrl = promos[i].payment_methods[1].thumbnail;
+            if (currentPromo.payment_methods[1]) {
+                imgUrl = currentPromo.payment_methods[1].thumbnail;
             } else {
-                imgUrl = promos[i].payment_methods[0].thumbnail;
+                imgUrl = currentPromo.payment_methods[0].thumbnail;
             }
             
-            $('<div><img src="' + imgUrl + '"></div>').appendTo('.carousel');
+            $('<div><div><img src="' + imgUrl + '">'
+                + '<div>Hasta ' + currentPromo.max_installments + ' cuotas sin interés!</div>'
+                + '<div>' + promoDate + '</div></div>'
+            ).appendTo('.carousel');
         }
         
         $('.carousel').slick({
@@ -43,5 +48,10 @@ $( document ).ready(function() {
             slidesToScroll: 3
         });
     }
-    
+
+    function getDate (date) {
+        // var formateDate = Date(date);
+        
+        // return formateDate.getDa
+    }
 });

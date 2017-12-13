@@ -1,0 +1,38 @@
+{
+    "303": {
+        "name": "Banco Patagonia",
+		"url": "../img/bank-logos/patagonia"
+    },
+    "1044":{
+        "name": "Banco Provincia",
+        "url": "../img/bank-logos/provincia"
+    },
+    "1007":{
+        "name": "ICBC",
+        "url": "../img/bank-logos/icbc"
+    },
+    "326":{
+        "name": "HSBC",
+        "url":"../img/bank-logos/hsbc"
+    },
+    "282":{
+        "name": "Banco Nacion",
+        "url":"../img/bank-logos/nacion"
+    },
+    "313":{
+        "name": "Banco Supervielle",
+        "url":"../img/bank-logos/supervielle"
+    },
+    "272":{
+        "name": "Banco Comafi",
+        "url":"../img/bank-logos/comafi"
+    },
+    "10002":{
+        "name": "Banco Columbia",
+        "url":"../img/bank-logos/columbia"
+    },
+    "1016":{
+        "name": "banco Ciudad",
+        "url":"../img/bank-logos/ciudad"
+    }
+}
