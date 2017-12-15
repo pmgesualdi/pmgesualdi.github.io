@@ -25,7 +25,13 @@
     font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .slick-track {
-    padding: 15%;
+    padding: 10%;
+}
+.carousel img {
+    width: 50%;
+    height: 50%;
+    -moz-user-select: none;
+    -webkit-touch-callout: none;
 }
 /* .slick-prev:before {
     background: #0041C2;
