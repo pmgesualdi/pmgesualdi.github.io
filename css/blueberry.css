@@ -25,19 +25,27 @@
     font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .slick-track {
-    padding: 10%;
+    padding: 10px;
 }
-.carousel img {
+/* .wrapper {
+    display: grid;
+    grid-template-columns: repeat(1fr);
+    grid-template-rows: repeat(1, 100px);
+}
+.promo-text {
+    grid-column: 1;
+}
+.promo-slick {
+    grid-column: 2/7;
+}
+.promo-logo {
+    grid-column: 8;
+} */
+.bank-logo img {
     width: 50%;
     height: 50%;
-    -moz-user-select: none;
-    -webkit-touch-callout: none;
 }
-/* .slick-prev:before {
-    background: #0041C2;
-    font-size: 30px;
+.bank-logo-mobile img {
+    width: 35%;
+    height: 35%;
 }
-.slick-next:before {
-    background: #0041C2;
-    font-size: 30px;
-} */

@@ -7,6 +7,7 @@ $( document ).ready(function() {
     $('.fa-wrench').toggleClass(getCss('rotate'));
     $('.fa-laptop').toggleClass(getCss('shrink'));
     $('.fa-lock').toggleClass(getCss('shake'));
+    $('.carousel').toggleClass(getCss('bank-logo'));
     
     sr.reveal($('#services'), { mobile: true, duration: 799, delay: 1 });
     sr.reveal($('#about'), { mobile: true, duration: 799, delay: 1 });
@@ -27,7 +28,11 @@ $( document ).ready(function() {
                 obj["max_installments"] = record.max_installments;
 
                 promosMP.push(obj);
-            });          
+            });
+
+            promosMP.sort(function(a, b) {
+                return b.max_installments > a.max_installments;
+            });
 
             $.getJSON('./resources/banks.json', function(data){
                 infoBancos = data; //Get bank logos
@@ -42,27 +47,32 @@ $( document ).ready(function() {
     
     function renderCarousel () {
         for(var i = 1; i < promosMP.length; i++) {
-            // var imgUrl;
             var promo = promosMP[i];
             
             if (infoBancos.hasOwnProperty(promo.id)) {
-                $('<div><img src=' + infoBancos[promo.id].url + ' alt=' + promo.name + ' />'
-                    + '<div>Hasta ' + promo.max_installments + ' cuotas sin interés!</div>'
-                    + '<div>Válido hasta: ' + promo.expiration_date + '</div></div>'
+                $('<div>' + promo.max_installments + ' cuotas con'
+                    + '<img src=' + infoBancos[promo.id].url + ' alt="' + promo.name + '" /></div>'
+                    // + '<div>Válido hasta: ' + promo.expiration_date + '</div></div>'
                 ).appendTo('.carousel');
             }
         }
 
         initCarousel();
-        
     }
     
     function initCarousel () {
         var slides = 'ontouchstart' in window ? 1 : 3;
         $('.carousel').slick({
-            infinite: true,
+            infinite: false,
+            autoplay: true,
             slidesToShow: slides,
-            slidesToScroll: slides
+            slidesToScroll: slides,
+            // responsive: [
+            //     {
+            //         breakpoint: 480,
+            //         settings: "unslick"
+            //     }
+            // ]
         });
     }
 });
