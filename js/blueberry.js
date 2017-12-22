@@ -7,7 +7,6 @@ $( document ).ready(function() {
     $('.fa-wrench').toggleClass(getCss('rotate'));
     $('.fa-laptop').toggleClass(getCss('shrink'));
     $('.fa-lock').toggleClass(getCss('shake'));
-    $('.carousel').toggleClass(getCss('bank-logo'));
     
     sr.reveal($('#services'), { mobile: true, duration: 799, delay: 1 });
     sr.reveal($('#about'), { mobile: true, duration: 799, delay: 1 });
@@ -65,6 +64,7 @@ $( document ).ready(function() {
         $('.carousel').slick({
             infinite: false,
             autoplay: true,
+            // arrows: false,
             slidesToShow: slides,
             slidesToScroll: slides,
             // responsive: [
