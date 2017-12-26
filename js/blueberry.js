@@ -64,15 +64,8 @@ $( document ).ready(function() {
         $('.carousel').slick({
             infinite: false,
             autoplay: true,
-            // arrows: false,
             slidesToShow: slides,
-            slidesToScroll: slides,
-            // responsive: [
-            //     {
-            //         breakpoint: 480,
-            //         settings: "unslick"
-            //     }
-            // ]
+            slidesToScroll: slides
         });
     }
 });
