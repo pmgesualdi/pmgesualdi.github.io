@@ -7,6 +7,7 @@ $( document ).ready(function() {
     $('.fa-wrench').toggleClass(getCss('rotate'));
     $('.fa-laptop').toggleClass(getCss('shrink'));
     $('.fa-lock').toggleClass(getCss('shake'));
+    $('.carousel-container').toggleClass(getCss('vertical-align'));
     
     sr.reveal($('#services'), { mobile: true, duration: 799, delay: 1 });
     sr.reveal($('#about'), { mobile: true, duration: 799, delay: 1 });
@@ -49,7 +50,7 @@ $( document ).ready(function() {
             var promo = promosMP[i];
             
             if (infoBancos.hasOwnProperty(promo.id)) {
-                $('<div>' + promo.max_installments + ' cuotas con'
+                $('<div class="carousel-elements-spacing">' + promo.max_installments + ' cuotas'
                     + '<img src=' + infoBancos[promo.id].url + ' alt="' + promo.name + '" /></div>'
                     // + '<div>Válido hasta: ' + promo.expiration_date + '</div></div>'
                 ).appendTo('.carousel');

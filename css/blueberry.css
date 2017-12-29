@@ -30,11 +30,25 @@
 	max-width: 1500px;
 }
 .slick-track {
-    padding: 10px;
+    margin: 5px 0px;
 }
-.bank-logo img {
+.carousel-logos img {
     width: 50%;
     height: 50%;
+}
+.mercado-link a {
+    color: #0041C2;
+    text-decoration: underline;
+}
+.carousel-elements-spacing {
+    margin-left: 50px;
+}
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+.vertical-align-mobile {
+    
 }
 
 @media only screen and (min-width: 768px) {
