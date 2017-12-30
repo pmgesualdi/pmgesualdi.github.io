@@ -18,7 +18,7 @@ $message = strip_tags(htmlspecialchars($_POST['message']));
 // Create the email and send the message
 $to = 'consulting@blueberrygroup.com.ar'; // Add your email address inbetween the '' replacing yourname@yourdomain.com - This is where the form will send a message to.
 $email_subject = "Formulario de contacto web de:  $name";
-$email_body = "Has recibido un nuevo mensaje desde el formulario de contacto de tu página web.\n\n"."Estos son los detalles:\n\nNombre: $name\n\nEmail: $email_address\n\nTeléfono: $phone\n\nMensaje:\n$message";
+$email_body = "Has recibido un nuevo mensaje desde el formulario de contacto de tu p\u00E1gina web.\n\n"."Estos son los detalles:\n\nNombre: $name\n\nEmail: $email_address\n\nTel\u00E9fono: $phone\n\nMensaje:\n$message";
 $headers = "De: noreply@blueberrygroup.com.ar\n"; // This is the email address the generated message will be from. We recommend using something like noreply@yourdomain.com.
 $headers .= "Respuesta: $email_address";   
 mail($to,$email_subject,$email_body,$headers);
