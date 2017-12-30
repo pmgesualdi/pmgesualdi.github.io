@@ -40,15 +40,18 @@
     color: #0041C2;
     text-decoration: underline;
 }
-.carousel-elements-spacing {
+.carousel-el-spacing {
     margin-left: 50px;
+}
+.carousel-el-spacing-mobile {
+    margin-left: 85px;
 }
 .vertical-align {
     display: flex;
     align-items: center;
 }
 .vertical-align-mobile {
-    
+    /* text: center; */
 }
 
 @media only screen and (min-width: 768px) {
@@ -60,5 +63,11 @@
 @media only screen and (max-width: 767px) {
     .carousel {
 		margin: 0 10%;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+    .carousel-container {
+        margin: 25% 0%;
 	}
 }

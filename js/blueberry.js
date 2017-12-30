@@ -1,5 +1,6 @@
 var promosMP = new Array;
 var infoBancos;
+var isMobile = 'ontouchstart' in window;
 
 $( document ).ready(function() {
 
@@ -36,13 +37,17 @@ $( document ).ready(function() {
 
             $.getJSON('./resources/banks.json', function(data){
                 infoBancos = data; //Get bank logos
-                renderCarousel(); //Render Carousel
+                if (isMobile) { //Render Carousel
+                    renderCarouselMobile()
+                } else {
+                    renderCarousel();
+                } 
             })
         }
     })
     
     function getCss (name) {
-        return ('ontouchstart' in window) ? name + '-mobile' : name;
+        return isMobile ? name + '-mobile' : name;
     }
     
     function renderCarousel () {
@@ -50,7 +55,22 @@ $( document ).ready(function() {
             var promo = promosMP[i];
             
             if (infoBancos.hasOwnProperty(promo.id)) {
-                $('<div class="carousel-elements-spacing">' + promo.max_installments + ' cuotas'
+                $('<div class="carousel-el-spacing">' + promo.max_installments + ' cuotas'
+                    + '<img src=' + infoBancos[promo.id].url + ' alt="' + promo.name + '" /></div>'
+                    // + '<div>Válido hasta: ' + promo.expiration_date + '</div></div>'
+                ).appendTo('.carousel');
+            }
+        }
+
+        initCarousel();
+    }
+
+    function renderCarouselMobile () {
+        for(var i = 1; i < promosMP.length; i++) {
+            var promo = promosMP[i];
+            
+            if (infoBancos.hasOwnProperty(promo.id)) {
+                $('<div class="carousel-el-spacing-mobile">'
                     + '<img src=' + infoBancos[promo.id].url + ' alt="' + promo.name + '" /></div>'
                     // + '<div>Válido hasta: ' + promo.expiration_date + '</div></div>'
                 ).appendTo('.carousel');
@@ -61,12 +81,12 @@ $( document ).ready(function() {
     }
     
     function initCarousel () {
-        var slides = 'ontouchstart' in window ? 1 : 3;
+        var slides = isMobile ? 1 : 3;
         $('.carousel').slick({
             infinite: false,
             autoplay: true,
             slidesToShow: slides,
-            slidesToScroll: slides
+            slidesToScroll: 1
         });
     }
 });
