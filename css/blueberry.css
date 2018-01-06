@@ -53,6 +53,9 @@
 .vertical-align-mobile {
     /* text: center; */
 }
+.fb {
+    color: #0041C2;
+}
 
 @media only screen and (min-width: 768px) {
     .promo-content {

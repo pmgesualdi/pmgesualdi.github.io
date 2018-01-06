@@ -35,16 +35,38 @@ $( document ).ready(function() {
                 return b.max_installments > a.max_installments;
             });
 
-            $.getJSON('./resources/banks.json', function(data){
-                infoBancos = data; //Get bank logos
-                if (isMobile) { //Render Carousel
-                    renderCarouselMobile()
-                } else {
-                    renderCarousel();
-                } 
-            })
+            getBankData();
         }
     })
+
+    function getBankData () {
+        $.getJSON('./resources/banks.json', function(data){
+            infoBancos = data; //Get bank logos
+            
+            if (isMobile) { //Render Carousel
+                renderCarouselMobile()
+            } else {
+                renderCarousel();
+            }
+
+            getFacebookData();
+        })
+    }
+
+    function getFacebookData () {
+        $.ajax({
+            url: 'http://graph.facebook.com/Blueberrygroup.com.ar/?fields=country_page_likes&access_token=EAACYwpL9XTIBAA4Rqd6z0BFu2VmZAirQhHWZAXL0mL40hmmuxa20vURtPpKOSGIQ9mc5hQII4ZCWt5CXFxEkg0dUcRjrpdiFwJvPaZCZAhf2ju2PG0xruOawL2ZAK5ZBVkgxLOBKNaRmhTncmOUYRVYjXXSYQX5yKAZD',
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                $('#facebook_likes').html(response.country_page_likes);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+        })
+    }
     
     function getCss (name) {
         return isMobile ? name + '-mobile' : name;
