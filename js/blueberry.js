@@ -13,31 +13,54 @@ $( document ).ready(function() {
     sr.reveal($('#services'), { mobile: true, duration: 799, delay: 1 });
     sr.reveal($('#about'), { mobile: true, duration: 799, delay: 1 });
     sr.reveal($('#footer'), { mobile: true, duration: 799, delay: 1 });
-        
-    $.ajax({
-        url: 'https://www.mercadopago.com/mla/credit_card_promos.json',
-        type: 'GET',
-        dataType: 'jsonp',
-        success: function(response) {
-            //Get MercadoPago promos
-            response[2].forEach(function(record) {
-                var obj = {};
-                
-                obj["id"] = record.issuer.id;
-                obj["name"] = record.issuer.name,
-                // obj["expiration_date"] = formatDate(record.expiration_date),
-                obj["max_installments"] = record.max_installments;
+    
+    getFacebookData();
 
-                promosMP.push(obj);
-            });
+    function getFacebookData () {
+        $.ajax({
+            url: 'http://graph.facebook.com/Blueberrygroup.com.ar/?fields=country_page_likes&access_token=EAACYwpL9XTIBAA4Rqd6z0BFu2VmZAirQhHWZAXL0mL40hmmuxa20vURtPpKOSGIQ9mc5hQII4ZCWt5CXFxEkg0dUcRjrpdiFwJvPaZCZAhf2ju2PG0xruOawL2ZAK5ZBVkgxLOBKNaRmhTncmOUYRVYjXXSYQX5yKAZD',
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                $('#facebook_likes').html(response.country_page_likes);
 
-            promosMP.sort(function(a, b) {
-                return b.max_installments > a.max_installments;
-            });
+                getCardPromos();
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                // alert(xhr.status);
+                // alert(thrownError);
+            }
+        })
+    }
 
-            getBankData();
-        }
-    })
+    function getCardPromos () {
+        $.ajax({
+            url: 'https://www.mercadopago.com/mla/credit_card_promos.json',
+            type: 'GET',
+            dataType: 'jsonp',
+            success: function(response) {
+                //Get MercadoPago promos
+                response[2].forEach(function(record) {
+                    var obj = {};
+                    
+                    obj["id"] = record.issuer.id;
+                    obj["name"] = record.issuer.name,
+                    // obj["expiration_date"] = formatDate(record.expiration_date),
+                    obj["max_installments"] = record.max_installments;
+
+                    promosMP.push(obj);
+                });
+
+                promosMP.sort(function(a, b) {
+                    return b.max_installments > a.max_installments;
+                });
+
+                getBankData();
+            }
+        })
+    }
+    
+    
 
     function getBankData () {
         $.getJSON('./resources/banks.json', function(data){
@@ -50,21 +73,6 @@ $( document ).ready(function() {
             }
 
             getFacebookData();
-        })
-    }
-
-    function getFacebookData () {
-        $.ajax({
-            url: 'http://graph.facebook.com/Blueberrygroup.com.ar/?fields=country_page_likes&access_token=EAACYwpL9XTIBAA4Rqd6z0BFu2VmZAirQhHWZAXL0mL40hmmuxa20vURtPpKOSGIQ9mc5hQII4ZCWt5CXFxEkg0dUcRjrpdiFwJvPaZCZAhf2ju2PG0xruOawL2ZAK5ZBVkgxLOBKNaRmhTncmOUYRVYjXXSYQX5yKAZD',
-            type: 'GET',
-            dataType: 'json',
-            success: function(response) {
-                $('#facebook_likes').html(response.country_page_likes);
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(xhr.status);
-                alert(thrownError);
-            }
         })
     }
     
