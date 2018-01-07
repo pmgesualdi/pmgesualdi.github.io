@@ -15,6 +15,7 @@ $( document ).ready(function() {
     sr.reveal($('#footer'), { mobile: true, duration: 799, delay: 1 });
     
     getFacebookData();
+    getCardPromos();
 
     function getFacebookData () {
         $.ajax({
@@ -23,8 +24,6 @@ $( document ).ready(function() {
             dataType: 'json',
             success: function(response) {
                 $('#facebook_likes').html(response.country_page_likes);
-
-                getCardPromos();
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 // alert(xhr.status);
@@ -60,8 +59,6 @@ $( document ).ready(function() {
         })
     }
     
-    
-
     function getBankData () {
         $.getJSON('./resources/banks.json', function(data){
             infoBancos = data; //Get bank logos
