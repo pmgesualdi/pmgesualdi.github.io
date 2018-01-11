@@ -55,6 +55,7 @@
 }
 .fb {
     color: #0041C2;
+    font-size: 1.28em;
 }
 
 @media only screen and (min-width: 768px) {
@@ -73,8 +74,11 @@
     .carousel-container {
         margin-top: 25%;
     }
-    .custom-link img {
+    .social-buttons {
+        margin-top: 5%;
+    }
+    /* .custom-link img {
         height: 25%;
         width: 25%;
-    }
+    } */
 }
