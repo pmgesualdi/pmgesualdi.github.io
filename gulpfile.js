@@ -7,6 +7,7 @@ var cleanCSS = require('gulp-clean-css');
 var rename = require("gulp-rename");
 var uglify = require('gulp-uglify');
 var pkg = require('./package.json');
+var concat = require('gulp-concat');
 
 // Set the banner content
 var banner = ['/*!\n',
@@ -16,6 +17,12 @@ var banner = ['/*!\n',
     ' */\n',
     ''
 ].join('');
+
+var jsFiles = 'js/*.js',
+    jsDest = 'dist/scripts';
+	
+var cssFiles = 'css/*.css',
+    cssDest = 'dist/styles';	
 
 // Compile LESS files from /less into /css
 gulp.task('less', function() {
@@ -102,4 +109,22 @@ gulp.task('sass', function() {
         .pipe(browserSync.reload({
             stream: true
         }))
+});
+
+gulp.task('scripts', function() {
+    return gulp.src(jsFiles)
+        .pipe(concat('scripts.js'))
+        .pipe(gulp.dest(jsDest))
+		.pipe(rename('scripts.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(jsDest));
+});
+
+gulp.task('styles', function() {
+    return gulp.src(cssFiles)
+        .pipe(concat('styles.css'))
+        .pipe(gulp.dest(cssDest))
+		.pipe(rename('styles.min.css'))
+        .pipe(cleanCSS({ compatibility: 'ie8' }))
+        .pipe(gulp.dest(cssDest));
 });

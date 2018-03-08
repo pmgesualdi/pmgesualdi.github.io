@@ -19,7 +19,7 @@ $( document ).ready(function() {
 
     function getFacebookData () {
         $.ajax({
-            url: 'https://graph.facebook.com/Blueberrygroup.com.ar/?fields=country_page_likes&access_token=EAACYwpL9XTIBAA4Rqd6z0BFu2VmZAirQhHWZAXL0mL40hmmuxa20vURtPpKOSGIQ9mc5hQII4ZCWt5CXFxEkg0dUcRjrpdiFwJvPaZCZAhf2ju2PG0xruOawL2ZAK5ZBVkgxLOBKNaRmhTncmOUYRVYjXXSYQX5yKAZD',
+            url: 'https://graph.facebook.com/Blueberrygroup.com.ar/?fields=country_page_likes&access_token=EAACYwpL9XTIBAGIZAEGgewZBPZAxeWZAFaJo0aLPC58nGxhxd3Op0nPMD4zeQFKAeHUGQrQPuZAslvozbJf4sr2issmLzU3m4TZCTWCZCs2eD2hzX2hmeDKXQnulS0pc1CD98LZAd8qL5CvmMCcsDSXV1UuPNcLZA5wu4l7LZCv5bxrgZDZD',
             type: 'GET',
             dataType: 'json',
             success: function(response) {
